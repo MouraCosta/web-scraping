@@ -7,7 +7,7 @@ def download_it(url, filename: str):
     response.raise_for_status()
 
     with open(filename, 'wb') as file:
-        for chunk in response.iter_content(100000):
+        for chunk in response.iter_content():
             file.write(chunk)
 
 
