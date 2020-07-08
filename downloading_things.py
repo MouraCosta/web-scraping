@@ -4,11 +4,15 @@ from sys import argv
 
 def download_it(url, filename: str):
     response = requests.get(url)
-    response.raise_for_status()
+
+    # Treats if the url doesnt exists.
+    try:
+        response.raise_for_status()
+    except Exception:
+        print("The requested url does not exist.")
 
     with open(filename, 'wb') as file:
-        for chunk in response.iter_content():
-            file.write(chunk)
+        file.write(response.content)
 
 
 if __name__ == '__main__':
