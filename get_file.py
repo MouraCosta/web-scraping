@@ -21,8 +21,8 @@ if __name__ == '__main__':
     try:
         download_it(*argv[1:])
     except TypeError:
-        print("\n\nThe download function works with only 2 arguments:\n"
+        print("\033[;33m\n\nThe download function works with only 2 arguments:\n"
               "\turl: The url you want to request a file.\n"
               "\tfilename: a str argument that accepts the file name (obviously).\n\n"
               "Syntax:\n"
-              f"\tpython get_file.py <https:\\www.Something_cOoL>.com> yay.anything")
+              f"\tpython get_file.py <https:\\www.Something_cOoL>.com> yay.anything\033[m")
