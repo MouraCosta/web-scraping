@@ -4,17 +4,17 @@ from sys import argv
 
 
 def download_it(url, filename: str):
-    response = requests.get(url)
+    request = requests.get(url)
 
     # Treats if the url doesnt exists.
     try:
-        response.raise_for_status()
+        request.raise_for_status()
     except HTTPError:
         print("The requested url does not exist.")
     
     # Make the file
     with open(filename, 'wb') as file:
-        file.write(response.content)
+        file.write(request.content)
 
 
 if __name__ == '__main__':
