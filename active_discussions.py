@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 from plotly.offline import offline
 
 
-def get_data(id_, a: list, b: list, c: list):
+def get_data(id_, artc: list, descd: list, by: list):
     """Get the data and append to the respective lists.
 
         lists = article_links, descendants, by
@@ -18,10 +18,10 @@ def get_data(id_, a: list, b: list, c: list):
 
     # Do a treatment to check if the "url" key exists
     try:
-        a.append(f"<a href='{current_dict['url']}'>"
+        artc.append(f"<a href='{current_dict['url']}'>"
                  f"{current_dict['title']}'</a>")
-        b.append(current_dict['descendants'])
-        c.append(f'article by:{current_dict["by"]}')
+        descd.append(current_dict['descendants'])
+        by.append(f'article by:{current_dict["by"]}')
     except KeyError as key:
         print(f"The key {key} is missing in the {id_}"
               f" information")
@@ -47,8 +47,8 @@ def main():
 
     # Make a visualization with the obtained data from an API call
     data = {
-        'type': 'bar',
-        'x': article_links,
+        'type': 'bar', 
+        'x': article_links, 
         'y': descendants,
         'hovertext': by,
         'marker': {
