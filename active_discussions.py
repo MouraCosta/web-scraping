@@ -19,7 +19,7 @@ def get_data(id_, artc: list, descd: list, by: list):
     # Do a treatment to check if the "url" key exists
     try:
         artc.append(f"<a href='{current_dict['url']}'>"
-                 f"{current_dict['title']}'</a>")
+                    f"{current_dict['title']}'</a>")
         descd.append(current_dict['descendants'])
         by.append(f'article by:{current_dict["by"]}')
     except KeyError as key:
@@ -42,13 +42,13 @@ def main():
     article_links, descendants, by = [], [], []
     with ThreadPoolExecutor() as executor:
         for id_ in id_list:
-            executor.submit(get_data, id_, article_links, 
+            executor.submit(get_data, id_, article_links,
                             descendants, by)
 
     # Make a visualization with the obtained data from an API call
     data = {
-        'type': 'bar', 
-        'x': article_links, 
+        'type': 'bar',
+        'x': article_links,
         'y': descendants,
         'hovertext': by,
         'marker': {
